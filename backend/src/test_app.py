@@ -34,7 +34,7 @@ class CastingAgencyTestCase(unittest.TestCase):
             "name":"Saif",
             "age":21,
             "gender":"M",
-            "movie_id":[1]
+            "movies_ids":[1]
         }
     def tearDown(self):
         """Executed after reach test"""

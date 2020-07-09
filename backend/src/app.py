@@ -78,7 +78,7 @@ def create_app(test_config=None):
   #Movie Endpoints
   @app.route("/movies",methods=['GET'])
   @requires_auth("get:movies")
-  def get_all_movies():
+  def get_all_movies(payload):
     page = request.args.get("page",1,type=int)
     start = (page-1) * MOVIES_PER_PAGE
     end = start+MOVIES_PER_PAGE
