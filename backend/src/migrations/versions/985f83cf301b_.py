@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: ff2655cb3949
+Revision ID: 985f83cf301b
 Revises: 
-Create Date: 2020-06-23 20:26:19.808334
+Create Date: 2020-07-10 02:52:33.717547
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ff2655cb3949'
+revision = '985f83cf301b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,23 +21,23 @@ def upgrade():
     op.create_table('actors',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
-    sa.Column('gender', sa.String(), nullable=False),
+    sa.Column('age', sa.Integer(), nullable=False),
+    sa.Column('gender', sa.CHAR(length=1), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('movies',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(), nullable=False),
-    sa.Column('release_date', sa.DateTime(), nullable=True),
+    sa.Column('release_date', sa.Date(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('title')
     )
     op.create_table('acts',
-    sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('movie_id', sa.Integer(), nullable=False),
     sa.Column('actor_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['actor_id'], ['actors.id'], ),
     sa.ForeignKeyConstraint(['movie_id'], ['movies.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('movie_id', 'actor_id')
     )
     # ### end Alembic commands ###
 
