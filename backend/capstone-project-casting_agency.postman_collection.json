@@ -1,0 +1,1294 @@
+{
+	"info": {
+		"_postman_id": "70a87900-8cef-4491-803f-99483ce23679",
+		"name": "capstone-project-casting_agency",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Casting Assistant",
+			"item": [
+				{
+					"name": "/actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9c34cc56-222c-4f5a-9053-0b8740a12f50",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains actors array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.actors).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5e730bdd-4abe-4327-9eac-2a124831ce96",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains movies array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movies).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/movies?page=1",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/actor_id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "efb623f9-7f9e-43bc-a2cf-04db3a10eb69",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains actor object\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.actor).to.be.an('object')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/actors/1",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/movie_id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e297b785-8deb-4610-81e1-09923c98d488",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains movie object\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movie).to.be.an('object')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/movies/2",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/actor_id/movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e1bd105d-2846-4307-91e3-41089a84afe7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains movies array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movies).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/actors/2/movies",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"2",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/movie_id/actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b9153953-05bc-4a58-8f81-5bd702ff0b68",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains actors array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.actors).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/movies/2/actors",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"2",
+								"actors"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Test several requests for casting assisstant ",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImpfTGpGSjY5eFBHT1U5bGFaZkduQyJ9.eyJpc3MiOiJodHRwczovL2ZzbmR1ZC5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVkODk2YTFkZWY3NWQwYmVmYmJlNDI2IiwiYXVkIjoiQ2FzdGluZ19BZ2VuY3lfQXBpIiwiaWF0IjoxNTk0NDAxMDY1LCJleHAiOjE1OTQ0ODc0NjUsImF6cCI6IlNzanhBQm1PSTQzbVczRDV6QXBEZ25ramxMa0NFMFhnIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyJdfQ.cFTK49N8mxavblIns6sRJj6FnFR5UnPvxN0Z-H31FscpJAZlPMkweD_kRz_gfVU5YHgRFdQ3yu8z0byM_xSdHk5xgDBRNOvDbfYtxGkQXnTlrTtcB46vHgC042pobEkVaTcqAPYfZRQ1yH37TRy8XIg69xwQtT-QVKNJHtQb4vVf-3Pj0PCooUIjbDp41AcsEjTGAShzxqoYqw4pz7Do-MPct3b4M7abexAljJBjv4OzauIIKm3h2pcJMKeq0dVi79s8OOM3wlZrtsmp4vH9v51vOErBgF9ic5YdflGxVsCfJJb2Mk43kOJNPlmA0umYySwPpKrm-WlnG8RvhFK1Ag",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0782c933-bdc1-44e3-9c5e-2b586a52082e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "16d12267-5c1c-4588-bf75-8ea0222d2e26",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Casting Director",
+			"item": [
+				{
+					"name": "/actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2514447b-6b14-4923-a576-74f86b71b7c6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains actors array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.actors).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "297faa8e-64c1-4547-8bbd-0e637d7c5908",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains movies array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movies).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/movies?page=1",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"",
+								"movies"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/actor_id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ffb159c4-68df-40e7-a5d8-2d9d18bbaad9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains actor object\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.actor).to.be.an('object')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/actors/2",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/movie_id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "660f84f5-a970-4ba3-8815-1d86807f3f2b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains movie object\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movie).to.be.an('object')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/movies/2",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/actor_id/movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5a223c3c-5d87-4e55-8b00-59eac07b8535",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains movies array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movies).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/actors/2/movies",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"2",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/movie_id/actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00f04bf9-4756-40c0-9afd-a83ce9894291",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains actors array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.actors).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/movies/2/actors",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"2",
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "199114d3-453b-4ae6-a4a8-d7f5fb4caace",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Faisal\",\r\n    \"age\":22,\r\n    \"gender\"  :\"M\",\r\n    \"movies_ids\":[2,3]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://saif0.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/movie_id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f8ada48a-79ac-4956-b66b-3b26070ed1a1",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"xxx\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://saif0.herokuapp.com/movies/3",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/actor_id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "889be9fc-35ce-4faf-8232-bcd67df05e15",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Yahya\",\r\n    \"age\":23,\r\n    \"gender\":\"M\",\r\n    \"movie_id\":[1,2,3]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://saif0.herokuapp.com/actors/4",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/actor_id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e9a10e42-5117-49df-98b3-74ca88af4a9c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/actors/7",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Test several requests for Casting Director",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImpfTGpGSjY5eFBHT1U5bGFaZkduQyJ9.eyJpc3MiOiJodHRwczovL2ZzbmR1ZC5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVkODk2YTFkZWY3NWQwYmVmYmJlNDI2IiwiYXVkIjoiQ2FzdGluZ19BZ2VuY3lfQXBpIiwiaWF0IjoxNTk0NDAxMTQ2LCJleHAiOjE1OTQ0ODc1NDYsImF6cCI6IlNzanhBQm1PSTQzbVczRDV6QXBEZ25ramxMa0NFMFhnIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3IiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9yIiwicGF0Y2g6bW92aWUiLCJwb3N0OmFjdG9yIl19.AAvsk48vEcohR-IUSd2byEtAam0Vwb11Mx6yHC8g0H4YOcHKLaadkjdjs3Lh78KPzUCyNvW0t2G4kM6qmv4p1nwoUjPeem6I80uow75xYLz14fOEavnZ6sDwUzKPKdcYz09KL61EatB-X8GGXez77cgfha5tc4epgY-dAQ-R62zj0ObKBlGylb6kdx4vvHah7oCD75QhGvOwnHXsU09tfJuN-_9AD_Qprzkh4E1j9cPJ1Po4zuvLW7NhCj7iZ5678yRNsIjEQ-hho6nMhf-CXvXjJCXEevJlz_8e-D4-RN9WXmZzWZ6avG4ClA-woXeub51w0hAncwVp5edOdMtJvQ",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c186a8ea-f991-42d9-8a2b-d6864885e947",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "40cb6783-0aa6-418b-8f9d-7ed2c3f59636",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Executive Producer",
+			"item": [
+				{
+					"name": "/actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0c9747ec-5884-4e88-8c8f-da4a50642691",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains actors array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.actors).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "53a295b3-16f8-4b30-99b5-69a1b8b8b4d6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains movies array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movies).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/movies?page=1",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/actor_id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8297e83-92b6-4850-8599-88cf6a5a1c4a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains actor object\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.actor).to.be.an('object')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/actors/2",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/movie_id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3245e3d0-ec70-45ed-a456-3481fccd0f7d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains movie object\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movie).to.be.an('object')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/movies/2",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/actor_id/movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b46aa293-801c-4131-8c8d-ccbb57ffb9ee",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains movies array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.movies).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/actors/2/movies",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"2",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/movie_id/actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "94bd414d-2986-4a48-af9b-f129dd86a704",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains actors array\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.actors).to.be.an('array')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/movies/2/actors",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"2",
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bf63418f-17a0-4b7a-a904-1901abea6ab2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"movieYY\",\r\n    \"release_date\":\"2025-3-12\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://saif0.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "75510818-aa0a-4c08-a3f9-cae781ddb51f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Faisal\",\r\n    \"age\":22,\r\n    \"gender\"  :\"M\",\r\n    \"movies_ids\":[1]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://saif0.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/movie_id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2883404e-f270-4cd9-ad10-d235fd7c5335",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"xwwww\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://saif0.herokuapp.com/movies/2",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/actor_id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "38594017-0fb0-4af1-8580-568720bfd4ea",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Yahya\",\r\n    \"age\":23,\r\n    \"gender\":\"M\",\r\n    \"movie_id\":[1,2,3]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://saif0.herokuapp.com/actors/2",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movies/movie_id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1846af67-c09b-4fdb-a82a-1974def4a799",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/movies/7",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/actors/actor_id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c2c8e5b5-6101-4ffd-8ddd-2fde65dec0d7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://saif0.herokuapp.com/actors/4",
+							"protocol": "https",
+							"host": [
+								"saif0",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Test Several requests for Executive Producer",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImpfTGpGSjY5eFBHT1U5bGFaZkduQyJ9.eyJpc3MiOiJodHRwczovL2ZzbmR1ZC5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVkODk2YTFkZWY3NWQwYmVmYmJlNDI2IiwiYXVkIjoiQ2FzdGluZ19BZ2VuY3lfQXBpIiwiaWF0IjoxNTk0NDAwMDgyLCJleHAiOjE1OTQ0ODY0ODIsImF6cCI6IlNzanhBQm1PSTQzbVczRDV6QXBEZ25ramxMa0NFMFhnIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6YWN0b3IiLCJkZWxldGU6bW92aWUiLCJnZXQ6YWN0b3JzIiwiZ2V0Om1vdmllcyIsInBhdGNoOmFjdG9yIiwicGF0Y2g6bW92aWUiLCJwb3N0OmFjdG9yIiwicG9zdDptb3ZpZSJdfQ.h24RsGVpafXydhuzpTU7Zqg6Bz8uPeu0N0MhPaU9ZiqR29l0-P7CwMPIdBPHMySXLsBM9yOJ2oRogEbWPjVrHdwxaTQfQVe-ypzw8L_Ke63IqSA7Zu-d_UbvTDCSBvV5tC-XSJCY7yBxn4MI3ZIl93J9lABK8YGvpmSQ1nHguNevNs0SJkLKbBD6VQ2DSXwSviwKaeoFnyFHi0aFYbTY210EwbfBJrHxx7NaVmrMtO6JUKZ84kojf-LXL5xjv8FqO4mKbHeo3oKWQINndgXqJaui6Hd-DqI-XMjmuK2Nic1EDPpU4GdrsRo0XV4rOjd5K6ysnHNG183mlpx3nKADTA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1b10aa23-90c2-44d1-ab82-fd8ca8b3b5db",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1c5373d3-abb4-45c3-bc9f-d0ba68bc2843",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

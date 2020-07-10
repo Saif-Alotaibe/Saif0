@@ -14,8 +14,10 @@ class CastingAgencyTestCase(unittest.TestCase):
         """Define test variables and initialize app."""
         self.app = create_app()
         self.client = self.app.test_client
+        self.headers= {"Authorization":f"Bearer {os.environ['Executive_Producer_Token']}"}
         self.database_name = "Casting_Agency_Test"
-        self.database_path = "postgres://safe1@{}/{}".format('localhost:5432', self.database_name)
+        User = "safe1"
+        self.database_path = "postgres://{}@{}/{}".format(User,'localhost:5432', self.database_name)
         setup_db(self.app, self.database_path)
 
         # binds the app to the current context
@@ -48,7 +50,7 @@ class CastingAgencyTestCase(unittest.TestCase):
     #Movie Endpoints
 
     def test_get_all_movies(self):
-        res = self.client().get("/movies")
+        res = self.client().get("/movies",headers=self.headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code,200)
@@ -58,7 +60,7 @@ class CastingAgencyTestCase(unittest.TestCase):
     
     
     def test_get_specific_movie(self):
-        res = self.client().get("/movies/1")
+        res = self.client().get("/movies/1",headers=self.headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code,200)
@@ -68,7 +70,7 @@ class CastingAgencyTestCase(unittest.TestCase):
 
 
     def test_get_actors_for_specific_move(self):
-        res = self.client().get("/movies/1/actors")
+        res = self.client().get("/movies/1/actors",headers=self.headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code,200)
@@ -79,7 +81,7 @@ class CastingAgencyTestCase(unittest.TestCase):
     #Actor Endpoints
 
     def test_get_all_actors(self):
-        res  = self.client().get("/actors")
+        res  = self.client().get("/actors",headers=self.headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code,200)
@@ -88,7 +90,7 @@ class CastingAgencyTestCase(unittest.TestCase):
         self.assertTrue(len(data['actors']))
 
     def test_get_specific_actor(self):
-        res = self.client().get("/actors/1")
+        res = self.client().get("/actors/1",headers=self.headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code,200)
@@ -97,7 +99,7 @@ class CastingAgencyTestCase(unittest.TestCase):
         self.assertTrue(len(data['actor'])) 
 
     def test_get_movies_for_specific_actor(self):
-        res  = self.client().get("/actors/1/movies") 
+        res  = self.client().get("/actors/1/movies",headers=self.headers) 
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code,200)
@@ -112,7 +114,7 @@ class CastingAgencyTestCase(unittest.TestCase):
     #--------------------------------------------------------------
     
     def test_create_new_movie(self):
-        res = self.client().post("/movies",json=self.new_movie)
+        res = self.client().post("/movies",json=self.new_movie,headers=self.headers)
         data= json.loads(res.data)
 
         self.assertEqual(res.status_code,200)
@@ -120,7 +122,7 @@ class CastingAgencyTestCase(unittest.TestCase):
         self.assertTrue(data['created_id'])
 
     def test_create_new_actor(self):
-        res = self.client().post("/actors",json=self.new_actor)
+        res = self.client().post("/actors",json=self.new_actor,headers=self.headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code,200)
@@ -133,7 +135,7 @@ class CastingAgencyTestCase(unittest.TestCase):
     #--------------------------------------------------------------    
     
     def test_update_movie(self):
-        res  = self.client().patch("/movies/4",json={"title":"xxxxx"})
+        res  = self.client().patch("/movies/4",json={"title":"xxxxx"},headers=self.headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code,200)
@@ -141,7 +143,7 @@ class CastingAgencyTestCase(unittest.TestCase):
         self.assertEqual(data['updated_id'],4)
 
     def test_update_actor(self):
-        res  = self.client().patch("/actors/4",json={"name":"Khalid"})
+        res  = self.client().patch("/actors/4",json={"name":"Khalid"},headers=self.headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code,200)
@@ -153,7 +155,7 @@ class CastingAgencyTestCase(unittest.TestCase):
     #--------------------------------------------------------------
     
     def test_delete_movie(self):
-        res = self.client().delete("/movies/2")
+        res = self.client().delete("/movies/2",headers=self.headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code,200)
@@ -161,7 +163,7 @@ class CastingAgencyTestCase(unittest.TestCase):
         self.assertEqual(data['deleted_id'],2)
 
     def test_delete_actor(self):
-        res = self.client().delete("/actors/2")
+        res = self.client().delete("/actors/2",headers=self.headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code,200)
@@ -174,7 +176,7 @@ class CastingAgencyTestCase(unittest.TestCase):
     #--------------------------------------------------------------
     
     def test_401_unauthoraized(self):
-        res = self.client().post("/actors")
+        res = self.client().post("/actors",headers=self.headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code,401)
@@ -182,7 +184,7 @@ class CastingAgencyTestCase(unittest.TestCase):
         self.assertEqual(data['message'],'unauthoraized')
         
     def test_404_not_found(self):
-        res = self.client().get("/movies/999999")
+        res = self.client().get("/movies/999999",headers=self.headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code,404)
@@ -190,7 +192,7 @@ class CastingAgencyTestCase(unittest.TestCase):
         self.assertEqual(data['message'],"resource not found")
 
     def test_422_unprocessable(self):
-        res = self.client().post("/movies",json={"title":"xx"})
+        res = self.client().post("/movies",json={"title":"xx"},headers=self.headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code,422)
