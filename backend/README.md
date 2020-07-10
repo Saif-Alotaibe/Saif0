@@ -11,7 +11,7 @@ Follow instructions to install the latest version of python for your platform in
 
 #### PIP Dependencies
 
-install dependencies by naviging to the `/backend` directory and running:
+install dependencies by naviging to the `/backend/src` directory and running:
 
 ```bash
 pip install -r requirements.txt
